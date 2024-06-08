@@ -1,0 +1,22 @@
+<!--
+  Created: 2024/06/07
+  Modified: 2024/06/08
+
+  Technique: Command and Scripting Interpreter: Python
+  Reference:
+  - https://attack.mitre.org/techniques/T1059/006/
+  - https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1059.006/T1059.006.md
+-->
+<Sysmon schemaversion="4.81">
+  <EventFiltering>
+    <RuleGroup name="" groupRelation="or">
+      <ProcessCreate onmatch="include">
+        <Rule name="TechniqueID=T1059.006,TechniqueName=Command and Scripting Interpreter: Python" groupRelation="or">
+          <Image condition="contains">python</Image>
+          <Image condition="contains">python2</Image>
+          <Image condition="contains">python3</Image>
+        </Rule>
+      </ProcessCreate>
+    </RuleGroup>
+  </EventFiltering>
+</Sysmon>

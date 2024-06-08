@@ -1,0 +1,21 @@
+<!--
+  Created: 2024/06/07
+  Modified: 2024/06/08
+
+  Technique: Abuse Elevation Control Mechanism: Sudo and Sudo Caching
+  Reference:
+  - https://attack.mitre.org/techniques/T1548/003/
+  - https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1548.003/T1548.003.md
+-->
+<Sysmon schemaversion="4.81">
+  <EventFiltering>
+    <RuleGroup name="" groupRelation="or">
+      <ProcessCreate onmatch="include">
+        <Rule name="TechniqueID=T1548.003,TechniqueName=Abuse Elevation Control Mechanism: Sudo and Sudo Caching" groupRelation="or">
+          <Image condition="end with">/sudo</Image>
+          <Image condition="end with">/su</Image>
+        </Rule>
+      </ProcessCreate>
+    </RuleGroup>
+  </EventFiltering>
+</Sysmon>

@@ -1,0 +1,20 @@
+<!--
+  Created: 2024/06/07
+  Modified: 2024/06/08
+
+  Technique: Deobfuscate/Decode Files or Information
+  Reference:
+  - https://attack.mitre.org/techniques/T1140
+  - https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1140/T1140.md
+-->
+<Sysmon schemaversion="4.81">
+  <EventFiltering>
+    <RuleGroup name="" groupRelation="or">
+      <ProcessCreate onmatch="include">
+        <Rule name="TechniqueID=T1140,TechniqueName=Deobfuscate/Decode Files or Information" groupRelation="or">
+          <CommandLine condition="contains any">enc;dec;b64;base64;xxd</CommandLine>
+        </Rule>
+      </ProcessCreate>
+    </RuleGroup>
+  </EventFiltering>
+</Sysmon>
